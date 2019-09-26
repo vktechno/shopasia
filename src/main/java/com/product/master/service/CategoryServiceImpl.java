@@ -19,4 +19,9 @@ public class CategoryServiceImpl implements CategoryService{
 		return categoryDao.getCategory();
 	}
 
+	@Override
+	public List<Map<String, Object>> getSubCategory() {
+		return categoryDao.getSubCategory();
+	}
+
 }

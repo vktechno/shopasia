@@ -43,5 +43,30 @@ public class CategoryController {
 		return new ResponseEntity<JSONObject>(js, HttpStatus.OK);
 		
 	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/productSubCategory", method = RequestMethod.GET)
+	public ResponseEntity<JSONObject> getProductSubCategoryMethod(){
+		JSONObject js = new JSONObject();
+		try {
+			List<Map<String, Object>> list = categoryService.getSubCategory();
+			if(!list.isEmpty()){
+				js.put("status", "1");
+				js.put("message", "Get All Product Sub Category");
+				js.put("result", list);
+			}else{
+				js.put("status", "0");
+				js.put("message", "Category Not Found");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			js.put("status", "500");
+			js.put("message", e.getMessage());
+			return new ResponseEntity<JSONObject>(js, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<JSONObject>(js, HttpStatus.OK);
+		
+	}
 
 }

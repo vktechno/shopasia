@@ -48,4 +48,16 @@ public class CarServiceImpl implements CarService{
 		return carDao.updateCarModel(carObject);
 	}
 
+	@Override
+	public Integer deleteCarBrand(Map<String, Object> carObject) {
+		carObject.put("brandId", Integer.parseInt((String)carObject.get("brandId")));
+		return carDao.deleteCarBrand(carObject);
+	}
+
+	@Override
+	public Integer deleteCarModel(Map<String, Object> carObject) {
+		carObject.put("modelId", Integer.parseInt((String)carObject.get("modelId")));
+		return carDao.deleteCarModel(carObject);
+	}
+
 }

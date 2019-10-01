@@ -12,115 +12,109 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CarDaoImpl implements CarDao{
+public class BikeDaoImpl implements BikeDao{
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
 	@Override
-	public List<Map<String, Object>> getCarBrand() {
-		String query = "SELECT car_id as carId, car_name as carName FROM product_car_brand";
+	public List<Map<String, Object>> getBikeBrand() {
+		String query = "SELECT brand_id as brandId, brand_name as brandName FROM product_bike_brand";
 		return jdbcTemplate.queryForList(query);
 	}
 
 	@Override
-	public Integer insertCarBrand(Map<String, Object> carObject) {
-		String query = "INSERT INTO product_car_brand(car_name) values(?)";
+	public Integer insertBikeBrand(Map<String, Object> bikeObject) {
+		String query = "INSERT INTO product_bike_brand(brand_name) values(?)";
 		return jdbcTemplate.update(new PreparedStatementCreator() {
 			
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(query);
-				ps.setString(1, (String)carObject.get("carName"));
+				ps.setString(1, (String) bikeObject.get("brandName"));
 				return ps;
 			}
 		});
 	}
 
 	@Override
-	public Integer updateCarBrand(Map<String, Object> carObject) {
-		System.out.println("car Object "+carObject);
-		String query = "UPDATE product_car_brand set car_name = ? where car_id = ?";
+	public Integer updateBikeBrand(Map<String, Object> bikeObject) {
+		String query = "UPDATE product_bike_brand set brand_name = ? where brand_id = ?";
 		return jdbcTemplate.update(new PreparedStatementCreator() {
 			
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(query);
-				ps.setString(1, (String)carObject.get("carName"));
-				ps.setInt(2, (int)carObject.get("carId"));
+				ps.setString(1, (String) bikeObject.get("brandName"));
+				ps.setInt(2, (int) bikeObject.get("brandId"));
 				return ps;
 			}
 		});
 	}
 
 	@Override
-	public List<Map<String, Object>> getCarModel() {
-		String query = "SELECT 	model_id as modelId, model_name as modelName, brand_id as brandId"
-				+ " FROM product_car_model";
+	public List<Map<String, Object>> getBikeModel() {
+		String query = "SELECT model_id as modelId, model_name as modelName, brand_id as brandId FROM product_bike_model";
 		return jdbcTemplate.queryForList(query);
 	}
 
 	@Override
-	public Integer insertCarModel(Map<String, Object> carObject) {
-		String query = "INSERT INTO product_car_model(model_name, brand_id) values(?,?)";
+	public Integer insertBikeModel(Map<String, Object> bikeObject) {
+		String query ="INSERT INTO product_bike_model(model_name, brand_id) values(?,?)";
 		return jdbcTemplate.update(new PreparedStatementCreator() {
 			
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(query);
-				ps.setString(1, (String) carObject.get("modelName"));
-				ps.setInt(2, (int) carObject.get("brandId"));
+				ps.setString(1, (String) bikeObject.get("modelName"));
+				ps.setInt(2, (int) bikeObject.get("brandId"));
 				return ps;
 			}
 		});
 	}
 
 	@Override
-	public Integer updateCarModel(Map<String, Object> carObject) {
-		String query = "UPDATE product_car_model set model_name = ?, brand_id = ?"
-				+ " Where model_id = ?";
+	public Integer updateBikeModel(Map<String, Object> bikeObject) {
+		String query = "UPDATE product_bike_model set model_name = ?, brand_id = ? WHERE model_id = ?";
 		return jdbcTemplate.update(new PreparedStatementCreator() {
 			
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(query);
-				ps.setString(1, (String) carObject.get("modelName"));
-				ps.setInt(2, (int) carObject.get("brandId"));
-				ps.setInt(3, (int) carObject.get("modelId"));
+				ps.setString(1, (String) bikeObject.get("modelName"));
+				ps.setInt(2, (int) bikeObject.get("brandId"));
+				ps.setInt(3, (int) bikeObject.get("modelId"));
 				return ps;
 			}
 		});
 	}
 
 	@Override
-	public Integer deleteCarBrand(Map<String, Object> carObject) {
-		String query = "DELETE FROM product_car_brand WHERE car_id = ?";
+	public Integer deleteBikeBrand(Map<String, Object> bikeObject) {
+		String query = "DELETE FROM product_bike_brand WHERE brand_id = ?";
 		return jdbcTemplate.update(new PreparedStatementCreator() {
 			
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(query);
-				ps.setInt(1, (int) carObject.get("brandId"));
+				ps.setString(1, (String) bikeObject.get("brandId"));
 				return ps;
 			}
 		});
 	}
 
 	@Override
-	public Integer deleteCarModel(Map<String, Object> carObject) {
-
-		String query = "DELETE FROM product_car_model WHERE model_id = ?";
+	public Integer deleteBikeModel(Map<String, Object> bikeObject) {
+		String query = "DELETE FROM product_bike_model WHERE model_id = ?";
 		return jdbcTemplate.update(new PreparedStatementCreator() {
-			
-			@Override
-			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement ps = con.prepareStatement(query);
-				ps.setInt(1, (int) carObject.get("modelId"));
-				return ps;
-			}
-		});
-	
-	}
+		
+		@Override
+		public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, (String) bikeObject.get("modelId"));
+			return ps;
+		}
+	});}
 	
 	
 }

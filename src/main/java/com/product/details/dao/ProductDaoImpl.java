@@ -137,4 +137,244 @@ public class ProductDaoImpl implements ProductDao{
 		return jdbcTemplate.queryForList(query, productId);
 	}
 
+	@Override
+	public List<Map<String, Object>> getTabletProduct(JSONObject jsonObject) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer insertTabletProduct(ProductModel pm) {
+
+		String query = "INSERT INTO product(client_id, cat_id, sub_cat_id, tab_type, title, description, price, state, city, Neighbourhood)"
+				+ " values(?,?,?,?,?,?,?,?,?,?)";
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setInt(1, pm.getClientId());
+				ps.setInt(2, pm.getCatId());
+				ps.setInt(3, pm.getSubCatId());
+				ps.setString(4, pm.getTabType());
+				ps.setString(5, pm.getTitle());
+				ps.setString(6, pm.getDescription());
+				ps.setInt(7, pm.getPrice());
+				ps.setString(8, pm.getState());
+				ps.setString(9, pm.getCity());
+				ps.setString(10, pm.getNeighbourhood());
+				return ps;
+			}
+		}, keyHolder);
+		return keyHolder.getKey().intValue();
+	
+	}
+
+	@Override
+	public Integer updateTabletProduct(ProductModel pm) {
+		String query = "UPDATE product set cat_id = ?, sub_cat_id = ?, tab_type = ?, title = ?, description = ?,"
+				+ " price = ?, state = ?, city = ?, Neighbourhood = ? where product_id = ?";
+		return jdbcTemplate.update(new PreparedStatementCreator() {
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setInt(1, pm.getCatId());
+				ps.setInt(2, pm.getSubCatId());
+				ps.setString(3, pm.getTabType());
+				ps.setString(4, pm.getTitle());
+				ps.setString(5, pm.getDescription());
+				ps.setInt(6, pm.getPrice());
+				ps.setString(7, pm.getState());
+				ps.setString(8, pm.getCity());
+				ps.setString(9, pm.getNeighbourhood());
+				ps.setInt(10, pm.getProductId());
+				return ps;
+			}
+		});
+	}
+
+	@Override
+	public List<Map<String, Object>> getAcceProduct(JSONObject jsonObject) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer insertAcceProduct(ProductModel pm) {
+
+		String query = "INSERT INTO product(client_id, cat_id, sub_cat_id, acce_type, title, description, price, state, city, Neighbourhood)"
+				+ " values(?,?,?,?,?,?,?,?,?,?)";
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setInt(1, pm.getClientId());
+				ps.setInt(2, pm.getCatId());
+				ps.setInt(3, pm.getSubCatId());
+				ps.setString(4, pm.getAcceType());
+				ps.setString(5, pm.getTitle());
+				ps.setString(6, pm.getDescription());
+				ps.setInt(7, pm.getPrice());
+				ps.setString(8, pm.getState());
+				ps.setString(9, pm.getCity());
+				ps.setString(10, pm.getNeighbourhood());
+				return ps;
+			}
+		}, keyHolder);
+		return keyHolder.getKey().intValue();
+	
+	}
+
+	@Override
+	public Integer updateAcceProduct(ProductModel pm) {
+		String query = "UPDATE product set cat_id = ?, sub_cat_id = ?, acce_type = ?, title = ?, description = ?,"
+				+ " price = ?, state = ?, city = ?, Neighbourhood = ? where product_id = ?";
+		return jdbcTemplate.update(new PreparedStatementCreator() {
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setInt(1, pm.getCatId());
+				ps.setInt(2, pm.getSubCatId());
+				ps.setString(3, pm.getAcceType());
+				ps.setString(4, pm.getTitle());
+				ps.setString(5, pm.getDescription());
+				ps.setInt(6, pm.getPrice());
+				ps.setString(7, pm.getState());
+				ps.setString(8, pm.getCity());
+				ps.setString(9, pm.getNeighbourhood());
+				ps.setInt(10, pm.getProductId());
+				return ps;
+			}
+		});
+	}
+
+	@Override
+	public List<Map<String, Object>> getFurnProduct(JSONObject jsonObject) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer insertFurnProduct(ProductModel pm) {
+
+		String query = "INSERT INTO product(client_id, cat_id, sub_cat_id, title, description, price, state, city, Neighbourhood)"
+				+ " values(?,?,?,?,?,?,?,?,?)";
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setInt(1, pm.getClientId());
+				ps.setInt(2, pm.getCatId());
+				ps.setInt(3, pm.getSubCatId());
+				ps.setString(4, pm.getTitle());
+				ps.setString(5, pm.getDescription());
+				ps.setInt(6, pm.getPrice());
+				ps.setString(7, pm.getState());
+				ps.setString(8, pm.getCity());
+				ps.setString(9, pm.getNeighbourhood());
+				return ps;
+			}
+		}, keyHolder);
+		return keyHolder.getKey().intValue();
+	
+	}
+
+	@Override
+	public Integer updateFurnProduct(ProductModel pm) {
+		String query = "UPDATE product set cat_id = ?, sub_cat_id = ?, title = ?, description = ?,"
+				+ " price = ?, state = ?, city = ?, Neighbourhood = ? where product_id = ?";
+		return jdbcTemplate.update(new PreparedStatementCreator() {
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setInt(1, pm.getCatId());
+				ps.setInt(2, pm.getSubCatId());
+				ps.setString(3, pm.getTitle());
+				ps.setString(4, pm.getDescription());
+				ps.setInt(5, pm.getPrice());
+				ps.setString(6, pm.getState());
+				ps.setString(7, pm.getCity());
+				ps.setString(8, pm.getNeighbourhood());
+				ps.setInt(9, pm.getProductId());
+				return ps;
+			}
+		});
+	}
+
+	@Override
+	public List<Map<String, Object>> getMotorcycleProduct(JSONObject jsonObject) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer insertMotorcycleProduct(ProductModel pm) {
+
+		String query = "INSERT INTO product(client_id, cat_id, sub_cat_id, title, description, price, state, city, Neighbourhood,"
+				+ "veh_brand, veh_model, veh_year, veh_driven, veh_fuel)"
+				+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setInt(1, pm.getClientId());
+				ps.setInt(2, pm.getCatId());
+				ps.setInt(3, pm.getSubCatId());
+				ps.setString(4, pm.getTitle());
+				ps.setString(5, pm.getDescription());
+				ps.setInt(6, pm.getPrice());
+				ps.setString(7, pm.getState());
+				ps.setString(8, pm.getCity());
+				ps.setString(9, pm.getNeighbourhood());
+				ps.setString(10, pm.getVehBrand());
+				ps.setString(11, pm.getVehModel());
+				ps.setString(12, pm.getVehYear());
+				ps.setString(13, pm.getVehDriven());
+				ps.setString(14, pm.getVehFuel());
+				return ps;
+			}
+		}, keyHolder);
+		return keyHolder.getKey().intValue();
+	
+	}
+
+	@Override
+	public Integer updateMotorcycleProduct(ProductModel pm) {
+		String query = "UPDATE product set cat_id = ?, sub_cat_id = ?, title = ?, description = ?,"
+				+ " price = ?, state = ?, city = ?, Neighbourhood = ?, veh_brand = ?, veh_model = ?,"
+				+ " veh_year = ?, veh_driven = ?, veh_fuel = ? where product_id = ?";
+		return jdbcTemplate.update(new PreparedStatementCreator() {
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setInt(1, pm.getCatId());
+				ps.setInt(2, pm.getSubCatId());
+				ps.setString(3, pm.getTitle());
+				ps.setString(4, pm.getDescription());
+				ps.setInt(5, pm.getPrice());
+				ps.setString(6, pm.getState());
+				ps.setString(7, pm.getCity());
+				ps.setString(8, pm.getNeighbourhood());
+				ps.setString(9, pm.getVehBrand());
+				ps.setString(10, pm.getVehModel());
+				ps.setString(11, pm.getVehYear());
+				ps.setString(12, pm.getVehDriven());
+				ps.setString(13, pm.getVehFuel());
+				ps.setInt(14, pm.getProductId());
+				return ps;
+			}
+		});
+	}
+
 }

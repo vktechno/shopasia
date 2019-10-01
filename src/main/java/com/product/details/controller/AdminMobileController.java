@@ -120,6 +120,152 @@ public class AdminMobileController {
 		}
 		return new ResponseEntity<JSONObject>(retJs, HttpStatus.OK);
 		
+	} 
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/insertTabletProduct", method = RequestMethod.POST)
+	public ResponseEntity<JSONObject> insertTabletProductMethod(@RequestBody ProductModel pm){
+		JSONObject retJs = new JSONObject();
+		try {
+			
+			int insertFlag = productService.insertTabletProduct(pm);
+			if(insertFlag > 0){
+				
+				List<String> imageNames = pm.getImageNames();
+				if(!imageNames.isEmpty()){
+					for(String img : imageNames){
+						int imageFlag = productService.insertImage(insertFlag, img);
+					}
+				}
+				
+				retJs.put("status", "1");
+				retJs.put("message", "Successfully Submited");
+				
+			}else{
+				retJs.put("status", "0");
+				retJs.put("message", "Please Try Again !");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			retJs.put("status", "500");
+			retJs.put("message", e.getMessage());
+			return new ResponseEntity<JSONObject>(retJs, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<JSONObject>(retJs, HttpStatus.OK);
+		
 	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/updateTabletProduct", method = RequestMethod.POST)
+	public ResponseEntity<JSONObject> updateTabletProductMethod(@RequestBody ProductModel pm){
+		JSONObject retJs = new JSONObject();
+		try {
+			
+			int insertFlag = productService.updateTabletProduct(pm);
+			if(insertFlag > 0){
+				
+				int delImgFlag = productService.deleteImage(pm.getProductId());
+				
+				if(delImgFlag > 0){
+					List<String> imageNames = pm.getImageNames();
+					if(!imageNames.isEmpty()){
+						for(String img : imageNames){
+							int imageFlag = productService.insertImage(pm.getProductId(), img);
+						}
+					}
+				}
+				
+				retJs.put("status", "1");
+				retJs.put("message", "Successfully Updated");
+				
+			}else{
+				retJs.put("status", "0");
+				retJs.put("message", "Please Try Again !");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			retJs.put("status", "500");
+			retJs.put("message", e.getMessage());
+			return new ResponseEntity<JSONObject>(retJs, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<JSONObject>(retJs, HttpStatus.OK);
+		
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/insertAcceProduct", method = RequestMethod.POST)
+	public ResponseEntity<JSONObject> insertAcceProductMethod(@RequestBody ProductModel pm){
+		JSONObject retJs = new JSONObject();
+		try {
+			
+			int insertFlag = productService.insertAcceProduct(pm);
+			if(insertFlag > 0){
+				
+				List<String> imageNames = pm.getImageNames();
+				if(!imageNames.isEmpty()){
+					for(String img : imageNames){
+						int imageFlag = productService.insertImage(insertFlag, img);
+					}
+				}
+				
+				retJs.put("status", "1");
+				retJs.put("message", "Successfully Submited");
+				
+			}else{
+				retJs.put("status", "0");
+				retJs.put("message", "Please Try Again !");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			retJs.put("status", "500");
+			retJs.put("message", e.getMessage());
+			return new ResponseEntity<JSONObject>(retJs, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<JSONObject>(retJs, HttpStatus.OK);
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/updateAcceProduct", method = RequestMethod.POST)
+	public ResponseEntity<JSONObject> updateAcceProductMethod(@RequestBody ProductModel pm){
+		JSONObject retJs = new JSONObject();
+		try {
+			
+			int insertFlag = productService.updateAcceProduct(pm);
+			if(insertFlag > 0){
+				
+				int delImgFlag = productService.deleteImage(pm.getProductId());
+				
+				if(delImgFlag > 0){
+					List<String> imageNames = pm.getImageNames();
+					if(!imageNames.isEmpty()){
+						for(String img : imageNames){
+							int imageFlag = productService.insertImage(pm.getProductId(), img);
+						}
+					}
+				}
+				
+				retJs.put("status", "1");
+				retJs.put("message", "Successfully Updated");
+				
+			}else{
+				retJs.put("status", "0");
+				retJs.put("message", "Please Try Again !");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			retJs.put("status", "500");
+			retJs.put("message", e.getMessage());
+			return new ResponseEntity<JSONObject>(retJs, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<JSONObject>(retJs, HttpStatus.OK);
+		
+	}
+	
 
 }

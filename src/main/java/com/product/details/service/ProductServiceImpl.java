@@ -50,4 +50,64 @@ public class ProductServiceImpl implements ProductService{
 	public List<Map<String, Object>> getImage(int productId) {
 		return productDao.getImage(productId);
 	}
+
+	@Override
+	public List<Map<String, Object>> getTabletProduct(JSONObject jsonObject) {
+		return productDao.getTabletProduct(jsonObject);
+	}
+
+	@Override
+	public Integer insertTabletProduct(ProductModel pm) {
+		return productDao.insertTabletProduct(pm);
+	}
+
+	@Override
+	public Integer updateTabletProduct(ProductModel pm) {
+		return productDao.updateTabletProduct(pm);
+	}
+
+	@Override
+	public List<Map<String, Object>> getAcceProduct(JSONObject jsonObject) {
+		return productDao.getAcceProduct(jsonObject);
+	}
+
+	@Override
+	public Integer insertAcceProduct(ProductModel pm) {
+		return productDao.insertAcceProduct(pm);
+	}
+
+	@Override
+	public Integer updateAcceProduct(ProductModel pm) {
+		return productDao.updateAcceProduct(pm);
+	}
+
+	@Override
+	public List<Map<String, Object>> getFurnProduct(JSONObject jsonObject) {
+		return productDao.getFurnProduct(jsonObject);
+	}
+
+	@Override
+	public Integer insertFurnProduct(ProductModel pm) {
+		return productDao.insertFurnProduct(pm);
+	}
+
+	@Override
+	public Integer updateFurnProduct(ProductModel pm) {
+		return productDao.updateFurnProduct(pm);
+	}
+
+	@Override
+	public List<Map<String, Object>> getMotorcycleProduct(JSONObject jsonObject) {
+		return productDao.getMotorcycleProduct(jsonObject);
+	}
+
+	@Override
+	public Integer insertMotorcycleProduct(ProductModel pm) {
+		return productDao.insertMotorcycleProduct(pm);
+	}
+
+	@Override
+	public Integer updateMotorcycleProduct(ProductModel pm) {
+		return productDao.updateMotorcycleProduct(pm);
+	}
 }

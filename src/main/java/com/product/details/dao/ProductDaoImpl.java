@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.product.details.model.ProductModel;
+import com.product.details.model.RealEstateModel;
 
 @Repository
 public class ProductDaoImpl implements ProductDao{
@@ -372,6 +373,111 @@ public class ProductDaoImpl implements ProductDao{
 				ps.setString(12, pm.getVehDriven());
 				ps.setString(13, pm.getVehFuel());
 				ps.setInt(14, pm.getProductId());
+				return ps;
+			}
+		});
+	}
+
+	@Override
+	public List<RealEstateModel> getRealEstateProdut() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer insertRealEstateProduct(RealEstateModel rem) {
+		String query = "INSERT INTO product(client_id,cat_id,sub_cat_id,title,description,price,p_type,p_bedrooms,"
+				+ "p_bathrooms,p_furnishing,p_con_status,p_listedby,p_sup_bu_area,p_carp_area,p_maintenance,"
+				+ "p_total_floors,p_floor_no,p_car_parking,p_facing,p_project_name,p_bachelors,p_washrooms,"
+				+ "p_lp_type,p_plot_area,p_length,p_breadth,p_subtype,p_meals,p_address,p_latitude,p_longitude)"
+				+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setInt(1, rem.getClientId());
+				ps.setInt(2, rem.getCatId());
+				ps.setInt(3, rem.getSubCatId());
+				ps.setString(4, rem.getTitle());
+				ps.setString(5, rem.getDescription());
+				ps.setInt(6, rem.getPrice());
+				ps.setString(7, rem.getpType());
+				ps.setString(8, rem.getpBedrooms());
+				ps.setString(9, rem.getpBathrooms());
+				ps.setString(10, rem.getpFurnishing());
+				ps.setString(11, rem.getpConStatus());
+				ps.setString(12, rem.getpListedBy());
+				ps.setString(13, rem.getpSupBuArea());
+				ps.setString(14, rem.getpCarpArea());
+				ps.setString(15, rem.getpMaintenance());
+				ps.setString(16, rem.getpTotalFloors());
+				ps.setString(17, rem.getpFloorNo());
+				ps.setString(18, rem.getpCarParking());
+				ps.setString(19, rem.getpFacing());
+				ps.setString(20, rem.getpProjectName());
+				ps.setString(21, rem.getpBachelors());
+				ps.setString(22, rem.getpWashrooms());
+				ps.setString(23, rem.getpLpType());
+				ps.setInt(24, rem.getpPlotArea());
+				ps.setInt(25, rem.getpLength());
+				ps.setInt(26, rem.getpBreath());
+				ps.setString(27, rem.getpSubType());
+				ps.setString(28, rem.getpMeals());
+				ps.setString(29, rem.getpAddress());
+				ps.setString(30, rem.getLatitude());
+				ps.setString(31, rem.getLongitude());
+				return ps;
+			}
+		},keyHolder);
+		return keyHolder.getKey().intValue();
+	}
+
+	@Override
+	public Integer updateRealEstateProduct(RealEstateModel rem) {
+		String query = "UPDATE product set cat_id = ?, sub_cat_id = ? , title = ? , description = ? , price = ?,"
+				+ "p_type = ? , p_bedrooms = ?, p_bathrooms = ?, p_furnishing = ?, p_con_status = ?, p_listedby = ?,"
+				+ "p_sup_bu_area = ?, p_carp_area = ?, p_maintenance = ?, p_total_floors = ?, p_floor_no = ?,"
+				+ "p_car_parking = ?, p_facing =?, p_project_name = ?, p_bachelors = ?, p_washrooms = ?, p_lp_type =?,"
+				+ "p_plot_area =?, p_length = ?, p_breadth = ?, p_subtype = ?, p_meals = ?, p_address = ?,"
+				+ "p_latitude =?, p_longitude = ? WHERE product_id = ?";
+		return jdbcTemplate.update(new PreparedStatementCreator() {
+			
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(query);
+				ps.setInt(1, rem.getCatId());
+				ps.setInt(2, rem.getSubCatId());
+				ps.setString(3, rem.getTitle());
+				ps.setString(4, rem.getDescription());
+				ps.setInt(5, rem.getPrice());
+				ps.setString(6, rem.getpType());
+				ps.setString(7, rem.getpBedrooms());
+				ps.setString(8, rem.getpBathrooms());
+				ps.setString(9, rem.getpFurnishing());
+				ps.setString(10, rem.getpConStatus());
+				ps.setString(11, rem.getpListedBy());
+				ps.setString(12, rem.getpSupBuArea());
+				ps.setString(13, rem.getpCarpArea());
+				ps.setString(14, rem.getpMaintenance());
+				ps.setString(15, rem.getpTotalFloors());
+				ps.setString(16, rem.getpFloorNo());
+				ps.setString(17, rem.getpCarParking());
+				ps.setString(18, rem.getpFacing());
+				ps.setString(19, rem.getpProjectName());
+				ps.setString(20, rem.getpBachelors());
+				ps.setString(21, rem.getpWashrooms());
+				ps.setString(22, rem.getpLpType());
+				ps.setInt(23, rem.getpPlotArea());
+				ps.setInt(24, rem.getpLength());
+				ps.setInt(25, rem.getpBreath());
+				ps.setString(26, rem.getpSubType());
+				ps.setString(27, rem.getpMeals());
+				ps.setString(28, rem.getpAddress());
+				ps.setString(29, rem.getLatitude());
+				ps.setString(30, rem.getLongitude());
+				ps.setInt(31, rem.getProductId());
 				return ps;
 			}
 		});

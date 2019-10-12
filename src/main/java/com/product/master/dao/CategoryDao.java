@@ -6,5 +6,5 @@ import java.util.Map;
 public interface CategoryDao {
 
 	List<Map<String, Object>> getCategory();
-	List<Map<String, Object>> getSubCategory();
+	List<Map<String, Object>> getSubCategory(int catId);
 }

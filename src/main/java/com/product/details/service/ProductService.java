@@ -6,6 +6,7 @@ import java.util.Map;
 import org.json.simple.JSONObject;
 
 import com.product.details.model.ProductModel;
+import com.product.details.model.RealEstateModel;
 
 public interface ProductService {
 	
@@ -56,5 +57,13 @@ public interface ProductService {
 	List<Map<String, Object>> getMotorcycleProduct(JSONObject jsonObject);
 	Integer insertMotorcycleProduct(ProductModel pm);
 	Integer updateMotorcycleProduct(ProductModel pm);
+	
+	/**
+	 * real estate
+	 */
+	
+	List<RealEstateModel> getRealEstateProdut();
+	Integer insertRealEstateProduct(RealEstateModel rem);
+	Integer updateRealEstateProduct(RealEstateModel rem);
 
 }

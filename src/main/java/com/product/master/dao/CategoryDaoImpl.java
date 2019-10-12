@@ -20,9 +20,10 @@ public class CategoryDaoImpl implements CategoryDao{
 	}
 
 	@Override
-	public List<Map<String, Object>> getSubCategory() {
-		String query = "SELECT sub_cat_id as subCatId, sub_cat_name as subCatName, cat_id as catId FROM product_sub_category";
-		return jdbcTemplate.queryForList(query);
+	public List<Map<String, Object>> getSubCategory(int catId) {
+		String query = "SELECT sub_cat_id as subCatId, sub_cat_name as subCatName, cat_id as catId FROM product_sub_category"
+				+ " WHERE cat_id = ?";
+		return jdbcTemplate.queryForList(query,catId);
 	}
 	
 	

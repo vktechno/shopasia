@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.product.details.dao.ProductDao;
 import com.product.details.model.ProductModel;
+import com.product.details.model.RealEstateModel;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -109,5 +110,20 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public Integer updateMotorcycleProduct(ProductModel pm) {
 		return productDao.updateMotorcycleProduct(pm);
+	}
+
+	@Override
+	public List<RealEstateModel> getRealEstateProdut() {
+		return productDao.getRealEstateProdut();
+	}
+
+	@Override
+	public Integer insertRealEstateProduct(RealEstateModel rem) {
+		return productDao.insertRealEstateProduct(rem);
+	}
+
+	@Override
+	public Integer updateRealEstateProduct(RealEstateModel rem) {
+		return productDao.updateRealEstateProduct(rem);
 	}
 }

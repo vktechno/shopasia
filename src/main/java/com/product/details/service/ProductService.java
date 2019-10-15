@@ -65,5 +65,10 @@ public interface ProductService {
 	List<RealEstateModel> getRealEstateProdut();
 	Integer insertRealEstateProduct(RealEstateModel rem);
 	Integer updateRealEstateProduct(RealEstateModel rem);
+	
+	/**
+	 * common get product
+	 */
+	List<ProductModel> getCommonProductDetails(Map<String, Object> map);
 
 }

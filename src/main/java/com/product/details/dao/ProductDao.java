@@ -67,4 +67,9 @@ public interface ProductDao {
 	List<RealEstateModel> getRealEstateProdut();
 	Integer insertRealEstateProduct(RealEstateModel rem);
 	Integer updateRealEstateProduct(RealEstateModel rem);
+	
+	/**
+	 * get common product
+	 */
+	List<ProductModel> getCommonProductDetails(Map<String, Object> map);
 }

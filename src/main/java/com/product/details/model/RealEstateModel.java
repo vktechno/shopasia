@@ -2,8 +2,8 @@ package com.product.details.model;
 
 import java.util.List;
 
-public class ProductModel {
-
+public class RealEstateModel {
+	
 	private int productId;
 	private int clientId;
 	private int catId;
@@ -11,14 +11,6 @@ public class ProductModel {
 	private String title;
 	private String description;
 	private int price;
-	private String vehBrand;
-	private String vehModel;
-	private String vehYear;
-	private String vehDriven;
-	private String vehFuel;
-	private String mobBrand;
-	private String tabType;
-	private String acceType;
 	private String pType;
 	private String pBedrooms;
 	private String pBathrooms;
@@ -36,14 +28,11 @@ public class ProductModel {
 	private String pBachelors;
 	private String pWashrooms;
 	private String pLpType;
-	private String pPlotArea;
-	private String pLength;
-	private String pBreath;
+	private int pPlotArea;
+	private int pLength;
+	private int pBreath;
 	private String pSubType;
 	private String pMeals;
-	private String state;
-	private String city;
-	private String neighbourhood;
 	private String pAddress;
 	private String longitude;
 	private String latitude;
@@ -52,29 +41,12 @@ public class ProductModel {
 	private List<String> imageNames;
 	
 	
+	
 	public String getpAddress() {
 		return pAddress;
 	}
 	public void setpAddress(String pAddress) {
 		this.pAddress = pAddress;
-	}
-	public String getLongitude() {
-		return longitude;
-	}
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
-	}
-	public String getLatitude() {
-		return latitude;
-	}
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
-	}
-	public List<String> getImageNames() {
-		return imageNames;
-	}
-	public void setImageNames(List<String> imageNames) {
-		this.imageNames = imageNames;
 	}
 	public int getProductId() {
 		return productId;
@@ -117,54 +89,6 @@ public class ProductModel {
 	}
 	public void setPrice(int price) {
 		this.price = price;
-	}
-	public String getVehBrand() {
-		return vehBrand;
-	}
-	public void setVehBrand(String vehBrand) {
-		this.vehBrand = vehBrand;
-	}
-	public String getVehModel() {
-		return vehModel;
-	}
-	public void setVehModel(String vehModel) {
-		this.vehModel = vehModel;
-	}
-	public String getVehYear() {
-		return vehYear;
-	}
-	public void setVehYear(String vehYear) {
-		this.vehYear = vehYear;
-	}
-	public String getVehDriven() {
-		return vehDriven;
-	}
-	public void setVehDriven(String vehDriven) {
-		this.vehDriven = vehDriven;
-	}
-	public String getVehFuel() {
-		return vehFuel;
-	}
-	public void setVehFuel(String vehFuel) {
-		this.vehFuel = vehFuel;
-	}
-	public String getMobBrand() {
-		return mobBrand;
-	}
-	public void setMobBrand(String mobBrand) {
-		this.mobBrand = mobBrand;
-	}
-	public String getTabType() {
-		return tabType;
-	}
-	public void setTabType(String tabType) {
-		this.tabType = tabType;
-	}
-	public String getAcceType() {
-		return acceType;
-	}
-	public void setAcceType(String acceType) {
-		this.acceType = acceType;
 	}
 	public String getpType() {
 		return pType;
@@ -268,22 +192,22 @@ public class ProductModel {
 	public void setpLpType(String pLpType) {
 		this.pLpType = pLpType;
 	}
-	public String getpPlotArea() {
+	public int getpPlotArea() {
 		return pPlotArea;
 	}
-	public void setpPlotArea(String pPlotArea) {
+	public void setpPlotArea(int pPlotArea) {
 		this.pPlotArea = pPlotArea;
 	}
-	public String getpLength() {
+	public int getpLength() {
 		return pLength;
 	}
-	public void setpLength(String pLength) {
+	public void setpLength(int pLength) {
 		this.pLength = pLength;
 	}
-	public String getpBreath() {
+	public int getpBreath() {
 		return pBreath;
 	}
-	public void setpBreath(String pBreath) {
+	public void setpBreath(int pBreath) {
 		this.pBreath = pBreath;
 	}
 	public String getpSubType() {
@@ -298,23 +222,18 @@ public class ProductModel {
 	public void setpMeals(String pMeals) {
 		this.pMeals = pMeals;
 	}
-	public String getState() {
-		return state;
+	
+	public String getLongitude() {
+		return longitude;
 	}
-	public void setState(String state) {
-		this.state = state;
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
 	}
-	public String getCity() {
-		return city;
+	public String getLatitude() {
+		return latitude;
 	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getNeighbourhood() {
-		return neighbourhood;
-	}
-	public void setNeighbourhood(String neighbourhood) {
-		this.neighbourhood = neighbourhood;
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
 	}
 	public String getCreatedOn() {
 		return createdOn;
@@ -328,23 +247,25 @@ public class ProductModel {
 	public void setLastUpdatedOn(String lastUpdatedOn) {
 		this.lastUpdatedOn = lastUpdatedOn;
 	}
+	public List<String> getImageNames() {
+		return imageNames;
+	}
+	public void setImageNames(List<String> imageNames) {
+		this.imageNames = imageNames;
+	}
 	@Override
 	public String toString() {
-		return "ProductModel [productId=" + productId + ", clientId=" + clientId + ", catId=" + catId + ", subCatId="
-				+ subCatId + ", title=" + title + ", description=" + description + ", price=" + price + ", vehBrand="
-				+ vehBrand + ", vehModel=" + vehModel + ", vehYear=" + vehYear + ", vehDriven=" + vehDriven
-				+ ", vehFuel=" + vehFuel + ", mobBrand=" + mobBrand + ", tabType=" + tabType + ", acceType=" + acceType
-				+ ", pType=" + pType + ", pBedrooms=" + pBedrooms + ", pBathrooms=" + pBathrooms + ", pFurnishing="
-				+ pFurnishing + ", pConStatus=" + pConStatus + ", pListedBy=" + pListedBy + ", pSupBuArea=" + pSupBuArea
+		return "RealEstateModel [productId=" + productId + ", clientId=" + clientId + ", catId=" + catId + ", subCatId="
+				+ subCatId + ", title=" + title + ", description=" + description + ", price=" + price + ", pType="
+				+ pType + ", pBedrooms=" + pBedrooms + ", pBathrooms=" + pBathrooms + ", pFurnishing=" + pFurnishing
+				+ ", pConStatus=" + pConStatus + ", pListedBy=" + pListedBy + ", pSupBuArea=" + pSupBuArea
 				+ ", pCarpArea=" + pCarpArea + ", pMaintenance=" + pMaintenance + ", pTotalFloors=" + pTotalFloors
 				+ ", pFloorNo=" + pFloorNo + ", pCarParking=" + pCarParking + ", pFacing=" + pFacing + ", pProjectName="
 				+ pProjectName + ", pBachelors=" + pBachelors + ", pWashrooms=" + pWashrooms + ", pLpType=" + pLpType
 				+ ", pPlotArea=" + pPlotArea + ", pLength=" + pLength + ", pBreath=" + pBreath + ", pSubType="
-				+ pSubType + ", pMeals=" + pMeals + ", state=" + state + ", city=" + city + ", neighbourhood="
-				+ neighbourhood + ", pAddress=" + pAddress + ", longitude=" + longitude + ", latitude=" + latitude
-				+ ", createdOn=" + createdOn + ", lastUpdatedOn=" + lastUpdatedOn + ", imageNames=" + imageNames + "]";
+				+ pSubType + ", pMeals=" + pMeals + ", pAddress=" + pAddress + ", longitude=" + longitude
+				+ ", latitude=" + latitude + ", createdOn=" + createdOn + ", lastUpdatedOn=" + lastUpdatedOn
+				+ ", imageNames=" + imageNames + "]";
 	}
-	
-	
 	
 }

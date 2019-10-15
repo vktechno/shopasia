@@ -2,6 +2,7 @@ package com.product.details.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -480,6 +482,71 @@ public class ProductDaoImpl implements ProductDao{
 				ps.setInt(31, rem.getProductId());
 				return ps;
 			}
+		});
+	}
+
+	@Override
+	public List<ProductModel> getCommonProductDetails(Map<String, Object> map) {
+		String query = "";
+		if(map.get("catId") != null && map.get("catId") != "" && map.get("subCatId") == null && map.get("subCatId") == ""){
+			query = "SELECT * FROM product WHERE cat_id = '"+map.get("catId")+"'";
+		}else if(map.get("catId") != null && map.get("catId") != "" && map.get("subCatId") != null && map.get("subCatId") != ""){
+			query = "SELECT * FROM product WHERE cat_id = '"+map.get("catId")+"' OR sub_cat_id = '"+map.get("subCatId")+"'";
+		}else{
+			query = "SELECT * FROM product";
+		}
+		
+		return jdbcTemplate.query(query,new RowMapper<ProductModel>(){
+
+			@Override
+			public ProductModel mapRow(ResultSet rs, int arg1) throws SQLException {
+				ProductModel pm = new ProductModel();
+				pm.setProductId(rs.getInt("product_id"));
+				pm.setClientId(rs.getInt("client_id"));
+				pm.setCatId(rs.getInt("cat_id"));
+				pm.setSubCatId(rs.getInt("sub_cat_id"));
+				pm.setTitle(rs.getString("title"));
+				pm.setDescription(rs.getString("description"));
+				pm.setPrice(rs.getInt("price"));
+				pm.setVehBrand(rs.getString("veh_brand"));
+				pm.setVehModel(rs.getString("veh_model"));
+				pm.setVehYear(rs.getString("veh_year"));
+				pm.setVehDriven(rs.getString("veh_driven"));
+				pm.setVehFuel(rs.getString("veh_fuel"));
+				pm.setMobBrand(rs.getString("mob_brand"));
+				pm.setTabType(rs.getString("tab_type"));
+				pm.setAcceType(rs.getString("acce_type"));
+				pm.setpType(rs.getString("p_type"));
+				pm.setpBedrooms(rs.getString("p_bedrooms"));
+				pm.setpBathrooms(rs.getString("p_bathrooms"));
+				pm.setpFurnishing(rs.getString("p_furnishing"));
+				pm.setpConStatus(rs.getString("p_con_status"));
+				pm.setpListedBy(rs.getString("p_listedby"));
+				pm.setpListedBy(rs.getString("p_sup_bu_area"));
+				pm.setpCarpArea(rs.getString("p_carp_area"));
+				pm.setpMaintenance(rs.getString("p_maintenance"));
+				pm.setpTotalFloors(rs.getString("p_total_floors"));
+				pm.setpFloorNo(rs.getString("p_floor_no"));
+				pm.setpCarParking(rs.getString("p_car_parking"));
+				pm.setpFacing(rs.getString("p_facing"));
+				pm.setpProjectName(rs.getString("p_project_name"));
+				pm.setpBachelors(rs.getString("p_bachelors"));
+				pm.setpWashrooms(rs.getString("p_washrooms"));
+				pm.setpLpType(rs.getString("p_lp_type"));
+				pm.setpPlotArea(rs.getString("p_plot_area"));
+				pm.setpLength(rs.getString("p_length"));
+				pm.setpBreath(rs.getString("p_breadth"));
+				pm.setpSubType(rs.getString("p_subtype"));
+				pm.setpMeals(rs.getString("p_meals"));
+				pm.setpAddress(rs.getString("p_address"));
+				pm.setLatitude(rs.getString("p_latitude"));
+				pm.setLongitude(rs.getString("p_latitude"));
+				pm.setState(rs.getString("state"));
+				pm.setCity(rs.getString("city"));
+				pm.setNeighbourhood(rs.getString("Neighbourhood"));
+				return pm;
+			}
+			
 		});
 	}
 

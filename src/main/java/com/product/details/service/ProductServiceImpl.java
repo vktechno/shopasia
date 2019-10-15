@@ -126,4 +126,9 @@ public class ProductServiceImpl implements ProductService{
 	public Integer updateRealEstateProduct(RealEstateModel rem) {
 		return productDao.updateRealEstateProduct(rem);
 	}
+
+	@Override
+	public List<ProductModel> getCommonProductDetails(Map<String, Object> map) {
+		return productDao.getCommonProductDetails(map);
+	}
 }
